@@ -1,88 +1,219 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Киноквиз: Кинематограф России</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#0d0f14;color:#f4f4f6;padding:16px 12px 40px}
-.w{max-width:700px;margin:0 auto}
-.box{background:#171a23;border:1px solid #2b3142;border-radius:14px;padding:18px;margin-bottom:14px}
-h1{font-size:21px;margin-bottom:6px}
-h1 span{color:#e8b945}
-.sub{color:#a0a8b8;font-size:14px}
-.item{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#171a23;border:1px solid #2b3142;border-radius:12px;padding:13px 14px;margin-bottom:9px;cursor:pointer}
-.item:hover{border-color:#e8b945}
-.num{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:#232838;color:#e8b945;border-radius:6px;font-weight:700;font-size:13px;margin-right:9px;flex-shrink:0}
-.qtxt{font-size:15px;font-weight:600;line-height:1.35}
-.go{color:#e8b945;font-size:13px;font-weight:700;white-space:nowrap}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.era{font-size:12px;color:#e8b945;font-weight:700;text-transform:uppercase}
-.cls{background:#232838;color:#f4f4f6;border:1px solid #353d52;padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}
-.title{font-size:19px;font-weight:700;line-height:1.35;margin-bottom:16px}
-.opt{width:100%;text-align:left;display:flex;align-items:center;gap:10px;padding:13px;background:#10131a;border:1px solid #2b3142;border-radius:10px;color:#f4f4f6;font-size:15px;margin-bottom:9px;cursor:pointer}
-.let{min-width:26px;height:26px;line-height:26px;text-align:center;border-radius:6px;background:#232838;color:#e8b945;font-weight:700;font-size:13px;flex-shrink:0}
-.opt.ok{background:rgba(25,135,84,.3);border-color:#2ecc71}
-.opt.ok .let{background:#2ecc71;color:#0b1911}
-.opt.bad{background:rgba(220,53,69,.3);border-color:#ff6b6b}
-.opt.bad .let{background:#ff6b6b;color:#1f0a0c}
-.note{background:#10131a;border-left:4px solid #e8b945;padding:12px;border-radius:8px;margin:14px 0;font-size:14px;line-height:1.45}
-.nav{display:flex;gap:10px;margin-top:12px}
-.nbtn{flex:1;padding:13px;border:none;border-radius:10px;background:#e8b945;color:#111318;font-weight:700;font-size:14px;cursor:pointer}
-.nbtn.sec{background:#232838;color:#f4f4f6}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой планер</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="w" id="app"></div>
+
+<div class="app">
+
+    <header class="status">
+        <span>9:41</span>
+        <div class="island"></div>
+        <span>▮▮▮ ◉ ▰</span>
+    </header>
+
+    <main>
+
+        <!-- СОБЫТИЯ -->
+        <section class="page active" id="events">
+
+            <div class="calendar">
+                <div class="month">
+                    <b>Январь 2027</b>
+                    <span>28-3</span>
+                </div>
+
+                <div class="weekdays">
+                    <span>Пн</span><span>Вт</span>
+                    <span>Ср</span><span>Чт</span>
+                    <span>Пт</span><span>Сб</span>
+                    <span>Вс</span>
+                </div>
+
+                <div class="dates">
+                    <button class="muted">28</button>
+                    <button class="muted">29</button>
+                    <button class="muted">30</button>
+                    <button class="muted">31</button>
+                    <button class="selected">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+            </div>
+
+            <div class="events-panel">
+
+                <h3>Мои события</h3>
+
+                <div class="week-checks">
+                    <span>▧</span>
+                    <span>✓</span><span>✓</span>
+                    <span>✓</span><span>✓</span>
+                    <span>✓</span><span>✓</span>
+                    <span>✓</span>
+                </div>
+
+                <div class="event-list">
+
+                    <div class="event running">
+                        <div class="event-icon">🏃</div>
+                        <div class="event-info">
+                            <div>Бег</div>
+                            <span>8:00 -10:00</span>
+                        </div>
+                        <button class="pause" id="pause">Ⅱ</button>
+                        <div class="progress"><span></span></div>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon">📕</div>
+                        <div class="event-info">
+                            <div>Читать</div>
+                            <span>7:00 -7:45</span>
+                        </div>
+                        <button class="check">✓</button>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon">🏊</div>
+                        <div class="event-info">
+                            <div>Бассейн</div>
+                            <span>6:00 -6:45</span>
+                        </div>
+                        <button class="check">✓</button>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon">🎞</div>
+                        <div class="event-info">
+                            <div>Кино</div>
+                            <span>5:00 -5:45</span>
+                        </div>
+                        <button class="check">✓</button>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon">📖</div>
+                        <div class="event-info">
+                            <div>Учеба</div>
+                            <span>7:00 -7:45</span>
+                        </div>
+                        <button class="check">✓</button>
+                    </div>
+
+                    <div class="event">
+                        <div class="event-icon">🏃</div>
+                        <div class="event-info">
+                            <div>Тренировка</div>
+                            <span>8:00 -9:00</span>
+                        </div>
+                        <button class="check">✓</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- СПОРТ -->
+        <section class="page" id="sport">
+            <div class="sport-block"></div>
+            <div class="sport-block"></div>
+        </section>
+
+        <!-- ПИТАНИЕ -->
+        <section class="page" id="food"></section>
+
+        <!-- НАСТРОЙКИ -->
+        <section class="page" id="settings"></section>
+
+    </main>
+
+    <!-- НИЖНЕЕ МЕНЮ -->
+    <nav class="bottom-nav">
+
+        <button data-page="food">
+            <span class="nav-icon">♧</span>
+            <span>Питание</span>
+        </button>
+
+        <button data-page="sport">
+            <span class="nav-icon">⚐</span>
+            <span>Спорт</span>
+        </button>
+
+        <button data-page="events" class="active">
+            <span class="nav-icon">▢</span>
+            <span>События</span>
+        </button>
+
+        <button data-page="settings">
+            <span class="nav-icon">⚙</span>
+            <span>Настройки</span>
+        </button>
+
+    </nav>
+
+    <div class="home-indicator"></div>
+
+</div>
+
 <script>
-const Q=[
-{q:"Где и когда состоялся первый публичный киносеанс в России?",a:["16 мая 1896 года в петербургском саду «Аквариум»","28 декабря 1895 года в московском театре «Эрмитаж»","15 октября 1908 года в Зимнем дворце","1 мая 1900 года на Нижегородской ярмарке"],c:0,i:"Первый публичный киносеанс в России прошёл 16 мая 1896 года в петербургском саду «Аквариум»."},
-{q:"Какой фильм Александра Дранкова стал первой российской игровой лентой в 1908 году?",a:["«Оборона Севастополя»","«Понизовая вольница» («Стенька Разин»)","«Пиковая дама»","«Отец Сергий»"],c:1,i:"«Понизовая вольница» («Стенька Разин») Александра Дранкова стала первой российской игровой лентой."},
-{q:"В ведение какого органа в 1919 году перешли киноторговля и кинопромышленность в РСФСР?",a:["Народного комиссариата по просвещению","Высшего совета народного хозяйства","Народного комиссариата иностранных дел","Комитета по делам искусств при СНК"],c:0,i:"В 1919 году киноторговля и кинопромышленность перешли в ведение Наркомпроса."},
-{q:"Кто из режиссёров НЕ относится к тройке новаторов советского монтажного кино?",a:["Сергей Эйзенштейн","Дзига Вертов","Лев Кулешов","Григорий Александров"],c:3,i:"Тройку новаторов монтажного кино составили Сергей Эйзенштейн, Дзига Вертов и Лев Кулешов."},
-{q:"Какой исторический фильм 1930-х соединил масштабную постановку и музыку Прокофьева?",a:["«Чапаев»","«Александр Невский»","«Иван Грозный»","«Суворов»"],c:1,i:"«Александр Невский» объединил исторический сюжет, масштаб постановки и музыку Сергея Прокофьева."},
-{q:"Какая актриса стала главной звездой музыкальных комедий Григория Александрова?",a:["Марина Ладынина","Любовь Орлова","Валентина Серова","Тамара Макарова"],c:1,i:"Любовь Орлова стала главной звездой музыкальных комедий Григория Александрова."},
-{q:"Какой советский фильм получил «Золотую пальмовую ветвь» Каннского кинофестиваля?",a:["«Баллада о солдате»","«Иваново детство»","«Летят журавли»","«Судьба человека»"],c:2,i:"Фильм Михаила Калатозова «Летят журавли» получил главный приз Канн в 1958 году."},
-{q:"Кто выступил оператором фильма «Летят журавли»?",a:["Эдуард Тиссэ","Сергей Урусевский","Вадим Юсов","Георгий Рерберг"],c:1,i:"Оператор Сергей Урусевский прославился новаторской работой с подвижной камерой."},
-{q:"Какой фильм 1959 года стал режиссёрским дебютом Сергея Бондарчука?",a:["«Война и мир»","«Судьба человека»","«Они сражались за Родину»","«Ватерлоо»"],c:1,i:"«Судьба человека» (1959) — режиссёрский дебют Сергея Бондарчука."},
-{q:"Какое направление в золотом веке советского кино развивал Андрей Тарковский?",a:["Эксцентрическая буффонада","Философская притча, память и образное время","Масштабная батальная реконструкция","Музыкальный водевиль"],c:1,i:"Авторское кино Андрея Тарковского соединяет философскую притчу, память и образное время."},
-{q:"Какие три фильма СССР получили премию «Оскар» за лучший фильм на иностранном языке?",a:["«Летят журавли», «Солярис», «Ирония судьбы»","«Война и мир», «Дерсу Узала», «Москва слезам не верит»","«Броненосец Потёмкин», «Баллада о солдате», «Калина красная»","«Андрей Рублёв», «Белое солнце пустыни», «Служебный роман»"],c:1,i:"Премию «Оскар» получили «Война и мир», «Дерсу Узала» и «Москва слезам не верит»."},
-{q:"Кто выступил режиссёром советско-японского фильма «Дерсу Узала» (1975)?",a:["Акира Куросава","Хаяо Миядзаки","Сергей Бондарчук","Никита Михалков"],c:0,i:"Режиссёром картины «Дерсу Узала» стал японский мастер Акира Куросава."},
-{q:"Какой фильм использует фантастическую сатиру для разговора о власти, дефиците и языке?",a:["«Асса»","«Кин-дза-дза!»","«Гостья из будущего»","«Солярис»"],c:1,i:"Фантастическая сатира Георгия Данелии «Кин-дза-дза!» говорит о власти, дефиците и языке."},
-{q:"Какие два фильма зафиксировали смену культурного кода после распада СССР?",a:["«Асса» и «Брат»","«Иди и смотри» и «Покаяние»","«Бриллиантовая рука» и «Служебный роман»","«Ночной дозор» и «Бумер»"],c:0,i:"Фильмы «Асса» и «Брат» зафиксировали смену культурного кода на рубеже эпох."},
-{q:"Какой фильм назван примером жанрового и цифрового рывка российского кино после 1991 года?",a:["«Ночной дозор»","«Адмиралъ»","«Легенда № 17»","«Эпидемия»"],c:0,i:"«Ночной дозор» стал примером жанрового и цифрового рывка российского кино."},
-{q:"В каких двух проектах из презентации снялся Владимир Машков (помимо фильма «Вор»)?",a:["«Бригада» и «Духless»","«Ликвидация» и «Движение вверх»","«Адмиралъ» и «Троцкий»","«Высоцкий» и «Лёд»"],c:1,i:"У Владимира Машкова выделены проекты «Вор», «Ликвидация» и «Движение вверх»."},
-{q:"В каких зарубежных фильмах сыграли Константин Хабенский и Светлана Ходченкова?",a:["«Особо опасен» и «Росомаха: Бессмертный»","«Миссия невыполнима» и «Чёрная вдова»","«Шпион, выйди вон!» и «Агенты А.Н.К.Л.»","«Джон Уик» и «Красный воробей»"],c:0,i:"Константин Хабенский снялся в «Особо опасен», а Светлана Ходченкова — в «Росомаха: Бессмертный»."},
-{q:"Кто из российских актёров снялся в фильме «Анора» и был номинирован на «Оскар» в 2025 году?",a:["Данила Козловский","Юрий Борисов (вместе с Марком Эйдельштейном в фильме)","Сергей Безруков","Константин Хабенский"],c:1,i:"Юрий Борисов и Марк Эйдельштейн сыграли в «Аноре», а Юрий Борисов получил номинацию на «Оскар»."},
-{q:"Какой мультфильм отмечен за «поэтическую образность и философскую интонацию»?",a:["«Ну, погоди!»","«Ёжик в тумане»","«Маша и Медведь»","«Винни-Пух»"],c:1,i:"«Ёжик в тумане» Юрия Норштейна отмечен за поэтическую образность и философскую интонацию."},
-{q:"Какой фильм 2022 года приводится как пример современного массового семейного кино?",a:["«Воздух»","«Чебурашка»","«Сто лет тому вперёд»","«Мастер и Маргарита»"],c:1,i:"Фильм «Чебурашка» (2022) приводится как главный пример массового семейного кино."}
-];
-const L=["А","Б","В","Г"],app=document.getElementById("app"),ans={};
-function list(){
-  let h=`<div class="box"><h1>Киноквиз: <span>Кинематограф России</span></h1><p class="sub">Нажмите на любой из 20 вопросов, чтобы открыть его и выбрать ответ. Иконников, Смолин; КБс-11</p></div>`;
-  Q.forEach((x,idx)=>{
-    const st=ans[idx]!==undefined?(ans[idx]===x.c?"✓ Верно":"✕ Ошибка"):"Открыть →";
-    h+=`<div class="item" onclick="openQ(${idx})"><div style="display:flex;align-items:center"><span class="num">${idx+1}</span><span class="qtxt">${x.q}</span></div><span class="go">${st}</span></div>`;
-  });
-  app.innerHTML=h;window.scrollTo(0,0);
-}
-function openQ(idx){
-  const x=Q[idx],ch=ans[idx],done=ch!==undefined;
-  let h=`<div class="box"><div class="top"><span class="era">Вопрос ${idx+1} из 20</span><button class="cls" onclick="list()">✕ Закрыть</button></div><div class="title">${x.q}</div>`;
-  x.a.forEach((o,j)=>{
-    let cls="opt";
-    if(done){if(j===x.c)cls+=" ok";else if(j===ch)cls+=" bad";}
-    h+=`<button class="${cls}" ${done?"disabled":""} onclick="pick(${idx},${j})"><span class="let">${L[j]}</span><span>${o}</span></button>`;
-  });
-  if(done){
-    h+=`<div class="note"><strong>${ch===x.c?"Верно!":"Неверно."}</strong> Правильный ответ: <b>${x.a[x.c]}</b>.<br>${x.i}</div>`;
-  }
-  h+=`<div class="nav"><button class="nbtn sec" onclick="list()">К вопросам</button>${idx<19?`<button class="nbtn" onclick="openQ(${idx+1})">Следующий →</button>`:""}</div></div>`;
-  app.innerHTML=h;window.scrollTo(0,0);
-}
-function pick(idx,j){ans[idx]=j;openQ(idx);}
-list();
+    // Переключение вкладок
+    const buttons = document.querySelectorAll('.bottom-nav button');
+    const pages = document.querySelectorAll('.page');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+
+            const target = button.dataset.page;
+
+            pages.forEach(page => {
+                page.classList.toggle(
+                    'active',
+                    page.id === target
+                );
+                if (page.id === target) {
+                    page.scrollTop = 0;
+                }
+            });
+
+            buttons.forEach(item => {
+                item.classList.toggle('active', item === button);
+            });
+
+        });
+    });
+
+    // Выбор даты
+    document.querySelectorAll('.dates button').forEach(date => {
+        date.addEventListener('click', () => {
+            document.querySelectorAll('.dates button')
+                .forEach(item => item.classList.remove('selected'));
+
+            date.classList.add('selected');
+        });
+    });
+
+    // Отметки событий
+    document.querySelectorAll('.check').forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('unchecked');
+            button.textContent =
+                button.classList.contains('unchecked') ? '○' : '✓';
+        });
+    });
+
+    // Пауза бега
+    document.getElementById('pause').addEventListener('click', function() {
+        this.classList.toggle('paused');
+        this.textContent = this.classList.contains('paused') ? '▶' : 'Ⅱ';
+    });
 </script>
+
 </body>
 </html>
